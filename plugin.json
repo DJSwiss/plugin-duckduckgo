@@ -14,14 +14,16 @@
       "type": "number",
       "label": "Width of the image (min: 320, max: 1536)",
       "description": "Must be specified in increments of 64. (e.g. 512, 1024)",
-      "placeholder": "512"
+      "placeholder": "512",
+      "defaultValue": 512
     },
     {
       "name": "height",
       "type": "number",
       "label": "Height of the image (min: 320, max: 1536)",
       "description": "Must be specified in increments of 64. (e.g. 512, 1024)",
-      "placeholder": "512"
+      "placeholder": "512",
+      "defaultValue": 512
     }
   ],
   "emoji": "🖼️",
