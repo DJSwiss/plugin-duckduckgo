@@ -30,7 +30,6 @@
   "title": "Stable Diffusion v2 Image",
   "openaiSpec": {
     "name": "image_generation_via_stable_diffusion",
-    "strict": true,
     "parameters": {
       "type": "object",
       "required": ["prompt"],
