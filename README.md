@@ -1,13 +1,21 @@
-# Stable Diffusion v2 Image
+# DuckDuckGo Search Plugin
 
-Generate Unique Images with the Stable Diffusion Plugin
+Search the web instantly with DuckDuckGo integration for TypingMind.
 
-Transform your imagination into stunning visuals using the power of Stable Diffusion. Easily create captivating images from just a few words.
+Perform fast, privacy-focused web searches directly from your TypingMind chat. Get definitions, related topics, and search results all in one place.
 
-**API Key Required:** You'll need a valid Stable API key. Obtain one from their website (free): https://platform.stability.ai/account/keys
+## Features
 
-## Examples
+- **Web Search**: Search the entire web using DuckDuckGo's API
+- **Instant Definitions**: Get instant definitions and abstracts when available
+- **Related Topics**: Discover related topics and disambiguation information
+- **Search Results**: View relevant search results with links
+- **No API Key Required**: Uses DuckDuckGo's free public API
+- **Privacy-Focused**: DuckDuckGo doesn't track your searches
 
-- "Create an image of a majestic lion standing proudly on a cliff overlooking a vast savanna at sunset."
-- "Generate a vibrant cyberpunk cityscape illuminated by neon signs and bustling with activity."
-- "Draw a photorealistic portrait of a woman with fiery red hair and emerald green eyes."
+## Usage Examples
+
+- "Search for information about quantum computing"
+- "Find the latest news about artificial intelligence"
+- "Look up the capital of France"
+- "Search for how to learn Python programming"

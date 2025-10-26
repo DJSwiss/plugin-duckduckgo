@@ -1,61 +1,37 @@
 {
-  "id": "image_generation_via_stable_diffusion",
-  "uuid": "f582e880-16d8-4a02-b247-86b4cbe9b389",
-  "userSettings": [
-    {
-      "name": "stabilityAPIKey",
-      "required": true,
-      "type": "password",
-      "label": "StabilityAI API Key",
-      "description": "Get your free API Key from StabilityAI: https://platform.stability.ai/account/keys"
-    },
-    {
-      "name": "width",
-      "type": "number",
-      "label": "Width of the image (min: 320, max: 1536)",
-      "description": "Must be specified in increments of 64. (e.g. 512, 1024)",
-      "placeholder": "512",
-      "defaultValue": 512
-    },
-    {
-      "name": "height",
-      "type": "number",
-      "label": "Height of the image (min: 320, max: 1536)",
-      "description": "Must be specified in increments of 64. (e.g. 512, 1024)",
-      "placeholder": "512",
-      "defaultValue": 512
-    }
-  ],
-  "emoji": "🖼️",
-  "title": "Stable Diffusion v2 Image",
+  "id": "duckduckgo_search",
+  "uuid": "a1b2c3d4-e5f6-4a7b-8c9d-e0f1a2b3c4d5",
+  "userSettings": [],
+  "emoji": "🔍",
+  "title": "DuckDuckGo Search",
   "openaiSpec": {
-    "name": "image_generation_via_stable_diffusion",
+    "name": "duckduckgo_search",
     "parameters": {
       "type": "object",
-      "required": ["prompt"],
+      "required": ["query"],
       "properties": {
-        "prompt": {
+        "query": {
           "type": "string",
-          "description": "The text description of the desired image."
+          "description": "The search query to look up on DuckDuckGo"
         }
       }
     },
-    "description": "Generate images using Stable Diffusion based on a text description. Adhere to guidelines such as English translation, not depicting politicians or recent artists, and ensuring artist references are over 100 years old.\n\nWhen creating prompt: substitute artist names with style-describing adjectives, include artistic era, mention primary medium. Image type, descent, gender are to be explicitly stated. Avoid offense and bias, conceal identities except gender and physique, retain text references, replace profession titles with universal terms.\n\nPrompt changes aren't allowed unless they anonymise individuals. Replace creative professional/studio names with style descriptions. All prompts should detail every image part in objective terms within a detailed paragraph of over three sentences.\n\nImportant: after calling this function, the output images will be shown to the user automatically. You don't need to include the output image to the users again in your response to avoid duplicate images."
+    "description": "Search the web using DuckDuckGo. Returns relevant search results, related topics, and definitions when available. Use this to find current information, answer user questions, or look up topics that require up-to-date data."
   },
   "httpAction": {
-    "id": "86d0cd86-f4de-4ca4-b712-1bfb01dfbfe6",
-    "method": "POST",
-    "name": "",
-    "url": "https://api.stability.ai/v1/generation/stable-diffusion-v1-6/text-to-image",
-    "requestBody": "{\"text_prompts\":[{\"text\":\"{prompt}\"}],\"cfg_scale\":7,\"samples\":1,\"steps\":30,\"width\":{width},\"height\":{height}}",
-    "requestHeaders": "{\"Content-Type\":\"application/json\",\"Authorization\":\"Bearer {stabilityAPIKey}\"}",
+    "id": "duckduckgo-search-action",
+    "method": "GET",
+    "name": "DuckDuckGo Search",
+    "url": "https://api.duckduckgo.com/?q={query}&format=json&no_html=1",
+    "requestBody": "",
+    "requestHeaders": "{}",
     "resultTransform": {
       "engine": "handlebars",
-      "templateString": "![{{__VARIABLES.prompt}}](data:image/png;base64,{{artifacts.[0].base64}})"
+      "templateString": "{{#if AbstractText}}**Definition:** {{AbstractText}}\n\n{{/if}}{{#if RelatedTopics}}**Related Topics:**\n{{#each RelatedTopics}}{{#if Text}}- {{Text}}\n{{/if}}{{/each}}\n{{/if}}{{#if Results}}**Search Results:**\n{{#each Results}}{{#if Result}}- {{{Result}}}\n{{/if}}{{/each}}{{/if}}"
     },
     "hasResultTransform": true,
-    "hasBody": true,
-    "hasHeaders": true
+    "hasBody": false,
+    "hasHeaders": false
   },
   "implementationType": "javascript",
   "outputType": "render_markdown"
